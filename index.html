@@ -10,8 +10,8 @@
   <meta name="author" content="Muhamad Rifki Sumarna"/>
   <meta name="description" content="Selamat datang di website rifki"/>
   <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js "></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-<link href="loading-bar.css" rel="stylesheet"/>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 body {
@@ -109,6 +109,41 @@ button {
     transform: rotate(22deg)
   }
 }
+.loading-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.loading-text {
+	font-size: 18px;
+	margin-top: 10px;
+	color: #000000;
+}
+
+.loading-spinner {
+	border: 4px solid #08A500;
+	border-top: 4px solid #08A500;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+	transform: rotate(0deg);
+}
+	100% {
+	transform: rotate(360deg);
+    }
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCLKSPLGKE"></script>
@@ -120,6 +155,12 @@ button {
 </script>
 </head>
 <body>
+  <div class="loading-overlay">
+    <div class="loading-spinner"></div>
+      <div class="loading-text">
+        Memuat...
+     </div>
+  </div>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -457,6 +498,14 @@ c-25 7 -59 20 -77 29 -35 19 -60 23 -28 5z"/>
   </div></div>
   </div>
 </div>
-<script src="loading-bar.js"></script>
+<script>
+	$(document).ready(function () {
+	setTimeout(function () {
+	$(".content").fadeIn(0);
+	$(".loading-overlay").delay(3000);
+	$(".loading-overlay").fadeOut(200);
+	}, 1000);
+});
+</script>
 </body>
 </html>
