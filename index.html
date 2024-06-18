@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="id-ID">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -525,7 +525,15 @@ p {
 }
 </style>
 </head>
-<body>
+<body onmousedown="return false" onselectstart="return false">
+<script>
+document.addEventListener('contextmenu', event => {
+  event.preventDefault();
+});
+document.querySelectorAll('.disabled').forEach(element => {
+  element.style.pointerEvents = 'none';
+});
+</script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 const firebaseConfig = {
